@@ -74,31 +74,26 @@ class Morpion {
       ) {
         console.log("Joueur " + symbol + " gagne !");
         this.isGameOver = true;
-      } else {
-        this.isGameOver = false;
       }
     }
   }
 
   gameLoop() {
     let i = 0;
-    let currentPlayer ="";
+    let currentPlayer = "";
 
     while (i < this.cells.length && this.isGameOver === false) {
       if (i % 2 === 0) {
         currentPlayer = this.player1;
-        // this.checkVictory(this.player1);
       } else {
         currentPlayer = this.player2;
-        // this.checkVictory(this.player2);
       }
+
+      this.play(currentPlayer);
+      this.checkVictory(currentPlayer);
       i++;
     }
   }
 }
-
-const m = new Morpion();
-m.gameLoop();
-// m.checkVictory();
 
 module.exports = Morpion;
